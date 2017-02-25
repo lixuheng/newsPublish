@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 通过常量配置该应用所使用的字符集 -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- 配置本系统所使用的包 -->
+	<package name="newsSystem" extends="struts-default">
+	
+		<action name="login" class="online.wozn.action.LoginAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		
+		<action name="newsview" class="online.wozn.action.NewsView">
+			<result name="success">/WEB-INF/content/news/readNews.jsp</result>
+		</action>
+		
+		<action name="logout" class="online.wozn.action.LogoutAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="reg" class="online.wozn.action.RegAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="isHadOneName" class="online.wozn.action.RegAction" method="isHadOneName">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="manageNews" class="online.wozn.action.ManageNewsAction">
+			<result name="success">/WEB-INF/content/news/manageNews.jsp</result>
+		</action>
+		
+		<action name="addnews" class="online.wozn.action.AddNewsAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="editNews" class="online.wozn.action.GoEditNewsAction">
+			<result name="success">/WEB-INF/content/news/editNews.jsp</result>
+		</action>
+		
+		<action name="alterNews" class="online.wozn.action.AlterNewsAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="delnews" class="online.wozn.action.DeleteNewsAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		
+		<action name="addComment" class="online.wozn.action.AddCommentAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="searchNews" class="online.wozn.action.SearchNewsAction">
+			<result>/WEB-INF/content/news/listSearchNews.jsp</result>
+		</action>
+		
+		<action name="index" class="online.wozn.action.FirstLoad">
+			<result>/WEB-INF/content/main.jsp</result>
+		</action>
+		
+		<!-- 配置直接跳转（redirect）action -->
+		
+		<action name="*_*">
+			<result>/WEB-INF/content/{1}/{2}.jsp</result>
+		</action>
+	</package>
+</struts>
